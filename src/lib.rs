@@ -1,7 +1,7 @@
 #[derive(Debug, Clone)]
 pub struct AudioInfo{
-    name: String,
-    path: String,
+    pub name: String,
+    pub path: String,
 }
 impl AudioInfo{
     pub fn new(p: std::fs::DirEntry) -> Self{
