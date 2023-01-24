@@ -13,7 +13,8 @@ impl AudioInfo{
 }
 #[derive(Debug, Clone)]
 pub struct Audio{
-    audios: Vec<AudioInfo>
+    audios: Vec<AudioInfo>,
+    pub is_mute: bool,
 }
 impl Audio{
 	/// Sounds a wav file that can be used by default on windowsOS
@@ -39,7 +40,7 @@ impl Audio{
             let a = AudioInfo::new(p);
             audios.push(a);
         }
-        Self{audios: audios}
+        Self{audios: audios, is_mute: false}
     }
 
     pub fn get_audios(&self) -> Vec<AudioInfo>{
@@ -47,6 +48,7 @@ impl Audio{
     }
 
     pub fn play(&self, name: &str){
+    	if self.is_mute {return;}
         let res = self.audios.iter().find(|&x| &x.name == name);
         if res.is_none(){return;}
         let file = std::fs::File::open(&res.unwrap().path).unwrap();
