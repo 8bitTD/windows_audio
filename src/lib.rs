@@ -17,6 +17,9 @@ pub struct Audio{
 }
 impl Audio{
     pub fn new() -> Self{
+    	if !std::path::Path::new("C:/Windows/Media/").is_dir(){
+    		return Self{ audios: vec![] }
+    	}
         let paths = std::fs::read_dir("C:/Windows/Media/").unwrap();
         let mut audios = Vec::new();
         for path in paths {
