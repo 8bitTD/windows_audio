@@ -28,7 +28,7 @@ impl Audio{
 	/// ```
     pub fn new() -> Self{
     	if !std::path::Path::new("C:/Windows/Media/").is_dir(){
-    		return Self{ audios: vec![] }
+    		return Self{ audios: vec![], is_mute: false }
     	}
         let paths = std::fs::read_dir("C:/Windows/Media/").unwrap();
         let mut audios = Vec::new();
