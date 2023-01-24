@@ -16,6 +16,15 @@ pub struct Audio{
     audios: Vec<AudioInfo>
 }
 impl Audio{
+	/// Sounds a wav file that can be used by default on windowsOS
+	/// # Examples
+	///
+	/// ```
+	/// let audio = windows_audio::Audio::new();
+	/// let audios = audio.get_audios();
+	/// audio.play(&audios[0].name);
+	/// std::thread::sleep(std::time::Duration::from_secs(7));
+	/// ```
     pub fn new() -> Self{
     	if !std::path::Path::new("C:/Windows/Media/").is_dir(){
     		return Self{ audios: vec![] }

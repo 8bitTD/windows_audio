@@ -1,5 +1,5 @@
 # windows_audio
-windows audio
+Sounds a wav file that can be used by default on windowsOS
 ```
 fn main() {
     let audio = windows_audio::Audio::new();
