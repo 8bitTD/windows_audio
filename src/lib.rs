@@ -29,7 +29,7 @@ impl Audio{
 	/// ```
     pub fn new() -> Self{
     	if !std::path::Path::new("C:/Windows/Media/").is_dir(){
-    		return Self{ audios: vec![], is_mute: false }
+    		return Self{ audios: vec![], is_mute: false, volume: 1.0 }
     	}
         let paths = std::fs::read_dir("C:/Windows/Media/").unwrap();
         let mut audios = Vec::new();
@@ -41,7 +41,7 @@ impl Audio{
             let a = AudioInfo::new(p);
             audios.push(a);
         }
-        Self{audios: audios, is_mute: false}
+        Self{audios: audios, is_mute: false, volume: 1.0}
     }
 
     pub fn get_audios(&self) -> Vec<AudioInfo>{
