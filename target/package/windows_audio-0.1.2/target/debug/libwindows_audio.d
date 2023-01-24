@@ -1,0 +1,1 @@
+D:\application\Rust\Project\windows_audio\target\package\windows_audio-0.1.2\target\debug\libwindows_audio.rlib: D:\application\Rust\Project\windows_audio\target\package\windows_audio-0.1.2\src\lib.rs
