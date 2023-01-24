@@ -15,6 +15,7 @@ impl AudioInfo{
 pub struct Audio{
     audios: Vec<AudioInfo>,
     pub is_mute: bool,
+    pub volume: f32,
 }
 impl Audio{
 	/// Sounds a wav file that can be used by default on windowsOS
@@ -52,10 +53,12 @@ impl Audio{
         let res = self.audios.iter().find(|&x| &x.name == name);
         if res.is_none(){return;}
         let file = std::fs::File::open(&res.unwrap().path).unwrap();
+        let vol = self.volume;
         std::thread::spawn(move || {
             let (_stream, handle) = rodio::OutputStream::try_default().unwrap();
             let sink = rodio::Sink::try_new(&handle).unwrap();
             sink.append(rodio::Decoder::new(std::io::BufReader::new(file)).unwrap());
+            sink.set_volume(val);
             sink.sleep_until_end();
         });
     }
