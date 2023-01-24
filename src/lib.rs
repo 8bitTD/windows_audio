@@ -53,7 +53,7 @@ impl Audio{
         let res = self.audios.iter().find(|&x| &x.name == name);
         if res.is_none(){return;}
         let file = std::fs::File::open(&res.unwrap().path).unwrap();
-        let vol = self.volume;
+        let val = self.volume;
         std::thread::spawn(move || {
             let (_stream, handle) = rodio::OutputStream::try_default().unwrap();
             let sink = rodio::Sink::try_new(&handle).unwrap();
